@@ -37,17 +37,28 @@ Ex: addKeyPowerIndex(arrOfObj2)
   {2: 4, c: 'duck'}
 ]   
 */
+var arrOfObj1 = [
+  { a: 12 },
+  { b: 5 },
+  { c: 16 },
+  { d: 4 },
+  { e: 3 }
+];
 
-function addKeyPowerIndex() {
-  // WRITE YOUR CODE UNDER THIS LINE  
+var arrOfObj2 = [
+  { a: 'cat' },
+  { b: 'dog' },
+  { c: 'duck' }
+];
 
+function addKeyPowerIndex(array) {
+  array.forEach(function (x, y) {
+        x[y] = y ** 2
+  });
+  return array;
 }
-
-
-
-
-
-
+console.log(addKeyPowerIndex(arrOfObj1));
+console.log(addKeyPowerIndex(arrOfObj2));
 
 /* Q2:
 Usind Map
@@ -63,15 +74,16 @@ Ex: decreseBy(arrOfnum1,10)
 Ex: decreseBy(arrOfNum1,-6)
 => [83, 11, 39]
 */
-
-function decreseBy() {
-  // WRITE YOUR CODE UNDER THIS LINE 
-
+var arrOfNum1 = [77,5,33]
+function decreseBy(arr,num) {
+  
+var array = arr.map(function(x){
+  return x-num;
+});
+return array;
 }
-
-
-
-
+console.log(decreseBy([77,5,33],10));
+console.log(decreseBy([77,5,33],-6));
 
 
 /* Q3:
@@ -102,16 +114,23 @@ Ex: nameLongerThan(arrOfObj4,6)
 ]
 */
 
-function nameLongerThan() {
-  // WRITE YOUR CODE UNDER THIS LINE         
+var arrOfObj4 = [
+  { name: "alex" },
+  { name: "mercer"},
+  { name: "alice" },
+  { name: "zaheer"},
+  { name: "elizabeth"}
+]
+
+function nameLongerThan(obj,num) {
+  
+  var newObj = obj.filter(function(x){
+    return x.name.length > num;
+  });
+  return newObj;       
 }
-
-
-
-
-
-
-
+console.log(nameLongerThan(arrOfObj4,4));
+console.log(nameLongerThan(arrOfObj4,6));
 
 /* Q4:
 Using Reduce
@@ -133,9 +152,21 @@ Ex: avgLength(arrOfObj4,"food")
 => 6.8
 */
 
-function avgLength() {
-  // WRITE YOUR CODE UNDER THIS LINE         
+var arrOfObj4 = [
+  { name: "alex", food: "fried chiken" },
+  { name: "mercer", food: "pizaa" },
+  { name: "alice", food: "burger" },
+  { name: "zaheer", food: "hot dog" },
+  { name: "elizabeth", food: "eggs" }
+]
 
+function avgLength(obj,key) {
+  
+  var array = obj.reduce(function(x,y){
+    return x + y[key].length;
+  },0);
+  return array / obj.length;       
 }
-
+console.log(avgLength(arrOfObj4,"name"));
+console.log(avgLength(arrOfObj4,"food"));
 // Good luck :)
